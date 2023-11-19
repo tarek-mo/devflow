@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @import url("../styles/theme.css");
 body {
   font-family: "Inter", sans-serif;
@@ -34,7 +33,6 @@ body {
   .primary-gradient {
     background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
   }
-
   .dark-gradient {
     background: linear-gradient(
       232deg,
@@ -47,7 +45,7 @@ body {
   }
 }
 .no-focus {
-  @apply focus-visible:ring-0 focus-visible:ring-transparent;
+  @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
 }
 .active-theme {
   filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
@@ -85,7 +83,6 @@ body {
 .markdown a {
   color: #1da1f2;
 }
-
 .markdown a,
 code {
   /* These are technically the same, but use both */
@@ -104,7 +101,6 @@ word-break: break-all;
   padding: 2px;
   color: #ff7000 !important;
 }
-
 .markdown pre {
   display: grid;
   width: 100%;
@@ -120,7 +116,6 @@ word-break: break-all;
 .cl-internal-b3fm6y {
   background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
 }
-
 .hash-span {
   margin-top: -140px;
   padding-bottom: 140px;

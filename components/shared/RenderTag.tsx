@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { Badge } from "@/components/ui/badge";
 
 interface RenderTagInterface {
-  _id: number;
+  _id: string;
   name: string;
   totalQuestions?: number;
   showCount?: boolean;

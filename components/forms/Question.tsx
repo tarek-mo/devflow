@@ -19,8 +19,12 @@ import { Input } from "@/components/ui/input";
 import { QuestionsSchema } from "@/lib/validations";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
+import { usePathname, useRouter } from "next/navigation";
 const type: any = "create";
-const Question = () => {
+const Question = ({ mongoUserId }: { mongoUserId: string }) => {
+  const router = useRouter();
+  const pathname = usePathname();
   // 1. Define your form.
   const editorRef = useRef<Editor | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,15 +38,20 @@ const Question = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
     try {
-      // make an async call to api => create a question
-      // contain all form data
-      // navigate to home page
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path: "/",
+      });
+      router.push("/");
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -118,6 +127,8 @@ const Question = () => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   onInit={(evt, editor) => {
                     // @ts-ignore

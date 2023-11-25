@@ -20,11 +20,11 @@ import { QuestionsSchema } from "@/lib/validations";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 const type: any = "create";
 const Question = ({ mongoUserId }: { mongoUserId: string }) => {
   const router = useRouter();
-  const pathname = usePathname();
+  // const pathname = usePathname();
   // 1. Define your form.
   const editorRef = useRef<Editor | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);

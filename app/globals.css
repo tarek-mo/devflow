@@ -41,7 +41,7 @@ body {
     );
   }
   .tab {
-    @apply min-h-full dark:bg-dark-400 bg-light-800 text-light-5;
+    @apply min-h-full dark:bg-dark-400 bg-light-800 text-light-500;
   }
 }
 .no-focus {
@@ -129,4 +129,13 @@ word-break: break-all;
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.tab[data-state="active"] {
+  background-color: rgb(255 241 230 / var(--tw-bg-opacity)) !important;
+  color: rgb(255 112 0 / var(--tw-text-opacity)) !important;
+}
+
+html.dark {
+  color: white;
 }

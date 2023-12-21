@@ -23,7 +23,6 @@ const LocalSearchbar = ({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
   const query = searchParams.get("q");
   const [search, setSearch] = useState(query || "");
   useEffect(() => {

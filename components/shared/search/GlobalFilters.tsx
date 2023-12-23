@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { GlobalSearchFilters } from "@/constants/filters";
 import { formUrlQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";

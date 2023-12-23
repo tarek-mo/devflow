@@ -7,7 +7,12 @@ import { QuestionFilters } from "@/constants/filters";
 import { getSavedQuestions } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import { auth } from "@clerk/nextjs";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Collections | Devflow",
+};
 
 const Home = async ({ searchParams }: SearchParamsProps) => {
   const { userId } = auth();
@@ -39,7 +44,7 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
       <div className="mt-10 flex w-full flex-col gap-6">
         {/* Looping throught questions */}
         {result.questions.length > 0 ? (
-          result.questions.map((question) => (
+          result.questions.map((question: any) => (
             <QuestionCard
               key={question._id}
               _id={question._id}

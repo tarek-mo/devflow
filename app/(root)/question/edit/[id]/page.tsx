@@ -4,7 +4,11 @@ import { getUserById } from "@/lib/actions/user.action";
 import { ParamsProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import React from "react";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Edit your question",
+};
 const Page = async ({ params }: ParamsProps) => {
   const { userId } = auth();
   if (!userId) return null;

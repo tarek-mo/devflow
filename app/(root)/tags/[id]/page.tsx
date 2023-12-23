@@ -2,10 +2,22 @@ import QuestionCard from "@/components/cards/QuestionCard";
 import NoResult from "@/components/shared/NoResult";
 import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { IQuestion } from "@/database/question.modal";
 import { getQuestionsByTagId } from "@/lib/actions/tag.actions";
 import { URLProps } from "@/types";
+import { Metadata } from "next";
 import React from "react";
+
+export async function generateMetadata({
+  params,
+}: URLProps): Promise<Metadata> {
+  const result = await getQuestionsByTagId({
+    tagId: params.id,
+  });
+
+  return {
+    title: `${result.tagTitle} Tag`,
+  };
+}
 
 export default async function Page({ params, searchParams }: URLProps) {
   const result = await getQuestionsByTagId({
@@ -30,7 +42,7 @@ export default async function Page({ params, searchParams }: URLProps) {
       <div className="mt-10 flex w-full flex-col gap-6">
         {/* Looping throught questions */}
         {result.questions.length > 0 ? (
-          result.questions.map((question: IQuestion) => (
+          result.questions.map((question: any) => (
             <QuestionCard
               key={question._id}
               _id={question._id}

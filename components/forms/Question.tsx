@@ -161,6 +161,8 @@ const Question = ({ mongoUserId, type, questionDetails }: Props) => {
                   init={{
                     height: 350,
                     menubar: false,
+                    font_family_formats: "Inter",
+
                     plugins: [
                       "advlist",
                       "autolink",
